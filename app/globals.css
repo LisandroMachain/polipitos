@@ -1,0 +1,102 @@
+/* Dirección C · Libro ilustrado: durazno, rosa pólipo, menta, ciruela */
+:root {
+  --durazno: #fff5ec;
+  --durazno-2: #ffe1d6;
+  --mucosa: #f7b9a8;
+  --rosa: #e0577b;
+  --rosa-osc: #b93a5e;
+  --menta: #7cc6b0;
+  --menta-osc: #20443b;
+  --ciruela: #4a2a3a;
+  --ciruela-suave: #7d5a6b;
+  --blanco: #ffffff;
+  --linea: #f0cfc2;
+  --titulo: 'Fredoka', 'Trebuchet MS', system-ui, sans-serif;
+  --mano: 'Gloria Hallelujah', 'Comic Sans MS', cursive;
+  --texto: 'Nunito', system-ui, sans-serif;
+  color-scheme: light;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body {
+  background: var(--durazno);
+  color: var(--ciruela);
+  font: 17px/1.6 var(--texto);
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; display: block; }
+a { color: var(--rosa-osc); }
+h1, h2, h3 { font-family: var(--titulo); line-height: 1.1; margin: 0; text-wrap: balance; }
+h1 { font-size: clamp(44px, 11vw, 76px); font-weight: 700; color: var(--rosa); letter-spacing: -0.01em; }
+h2 { font-size: clamp(28px, 6vw, 38px); font-weight: 700; }
+h3 { font-size: 21px; font-weight: 600; }
+p { margin: 0; max-width: 62ch; }
+
+.contenedor {
+  max-width: 880px;
+  margin: 0 auto;
+  padding-left: max(18px, env(safe-area-inset-left, 0px));
+  padding-right: max(18px, env(safe-area-inset-right, 0px));
+}
+main.contenedor { padding-block: 28px 96px; display: flex; flex-direction: column; gap: 44px; }
+.pila { display: flex; flex-direction: column; gap: 14px; }
+.mano { font-family: var(--mano); font-size: 18px; line-height: 1.45; }
+.suave { color: var(--ciruela-suave); }
+.chico { font-size: 14px; }
+
+/* Navegación inferior, estilo app */
+.nav {
+  position: fixed; inset: auto 0 0 0; z-index: 20;
+  background: var(--blanco);
+  border-top: 2px solid var(--linea);
+  padding: 6px max(8px, env(safe-area-inset-right, 0px)) calc(6px + env(safe-area-inset-bottom, 0px)) max(8px, env(safe-area-inset-left, 0px));
+}
+.nav ul { list-style: none; margin: 0 auto; padding: 0; max-width: 640px; display: grid; grid-template-columns: repeat(5, 1fr); }
+.nav a {
+  display: flex; flex-direction: column; align-items: center; gap: 2px;
+  text-decoration: none; color: var(--ciruela-suave);
+  font: 600 12px/1.2 var(--titulo); padding: 6px 2px; border-radius: 12px;
+}
+.nav a[aria-current='page'] { color: var(--rosa); background: var(--durazno); }
+.nav svg { width: 26px; height: 26px; }
+
+.cabecera { padding-block: 14px 0; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.marca { font: 700 24px/1 var(--titulo); color: var(--rosa); text-decoration: none; display: flex; align-items: center; gap: 8px; }
+
+/* Botones y campos */
+.boton {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  background: var(--menta); color: var(--menta-osc);
+  font: 700 17px/1 var(--titulo);
+  padding: 15px 22px; border-radius: 999px; border: 0; cursor: pointer;
+  text-decoration: none; min-height: 50px;
+  box-shadow: 0 3px 0 #5aa592;
+  transition: transform .1s;
+}
+.boton:active { transform: translateY(2px); box-shadow: 0 1px 0 #5aa592; }
+.boton.rosa { background: var(--rosa); color: var(--blanco); box-shadow: 0 3px 0 var(--rosa-osc); }
+.boton.borde { background: var(--blanco); color: var(--rosa); box-shadow: inset 0 0 0 2px var(--rosa); }
+.boton:disabled { opacity: .5; cursor: not-allowed; }
+.boton:focus-visible, .campo:focus-visible, .nav a:focus-visible { outline: 3px solid var(--ciruela); outline-offset: 2px; }
+
+.campo {
+  width: 100%; font: 17px/1.4 var(--texto); color: var(--ciruela);
+  background: var(--blanco); border: 2px solid var(--linea); border-radius: 14px;
+  padding: 12px 14px;
+}
+label { font: 600 15px/1.3 var(--titulo); display: flex; flex-direction: column; gap: 6px; }
+
+.tarjeta { background: var(--blanco); border-radius: 22px; padding: 20px; display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.chip {
+  display: inline-block; font: 600 13px/1 var(--titulo);
+  background: var(--blanco); border: 1.5px solid var(--rosa); color: var(--rosa);
+  padding: 6px 10px; border-radius: 999px;
+}
+.chip.menta { border-color: var(--menta); color: var(--menta-osc); background: #e3f4ef; }
+.aviso { background: var(--durazno-2); border-radius: 16px; padding: 14px 16px; font-size: 15px; }
+.num { font-variant-numeric: tabular-nums; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
